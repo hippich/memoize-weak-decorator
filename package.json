@@ -1,18 +1,19 @@
 {
   "name": "memoize-weak-decorator",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": ["memoize", "decorator"],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/adufilie/memoize-weak-decorator.git"
-  },
-  "main": "dist/memoize-weak-decorator.js",
-  "typings": "dist/types/memoize-weak-decorator.d.ts",
-  "files": [
-    "dist"
+  "version": "1.0.0",
+  "main": "dist/src/memoize.js",
+  "typings": "dist/src/memoize.d.ts",
+  "description": "Garbage-collected memoizer for variadic functions that can be used as a decorator",
+  "keywords": [
+    "memoize",
+    "weak",
+    "decorator"
   ],
   "author": "Andy Dufilie <andy.dufilie@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adufilie/memoize-weak-decorator.git"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
@@ -69,31 +70,38 @@
     }
   },
   "devDependencies": {
+    "@types/chai": "^3.4.35",
     "@types/jest": "^18.1.1",
     "@types/node": "^7.0.2",
+    "@types/sinon": "^1.16.35",
+    "@types/webpack": "^2.2.7",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
     "colors": "^1.1.2",
     "commitizen": "^2.9.5",
     "coveralls": "^2.11.15",
     "cross-env": "^3.1.4",
-    "cz-conventional-changelog": "^1.2.0",
+    "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.13.1",
-    "jest": "^18.1.0",
+    "jest": "^19.0.2",
     "prompt": "^1.0.0",
     "replace-in-file": "^2.3.2",
     "rimraf": "^2.5.4",
     "semantic-release": "^6.3.2",
-    "ts-jest": "^18.0.1",
+    "sinon": "^1.17.7",
+    "ts-jest": "^19.0.0",
     "ts-loader": "^2.0.0",
     "ts-node": "^2.0.0",
     "tslint": "^4.3.1",
-    "tslint-config-standard": "^4.0.0",
+    "tslint-react": "^2.4.0",
     "typedoc": "^0.5.5",
     "typedoc-webpack-plugin": "^1.1.3",
-    "typescript": "^2.1.6",
+    "typescript": "^2.2.1",
     "validate-commit-msg": "^2.10.1",
-    "webpack": "^2.2.0"
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "memoize-weak-decorator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/src/memoize.js",
   "typings": "dist/src/memoize.d.ts",
   "description": "Garbage-collected memoizer for variadic functions that can be used as a decorator",

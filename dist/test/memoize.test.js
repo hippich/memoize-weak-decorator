@@ -17,12 +17,6 @@ class Foo {
         });
         this.y = 'y';
     }
-    makeXObject(value) {
-        return {
-            origin: this,
-            x: value
-        };
-    }
     // used as a decorator
     bar(x, y, z) {
         return {
@@ -30,9 +24,6 @@ class Foo {
         };
     }
 }
-__decorate([
-    memoize_1.default
-], Foo.prototype, "makeXObject", null);
 __decorate([
     memoize_1.default
 ], Foo.prototype, "bar", null);
@@ -43,14 +34,12 @@ describe('memoize', () => {
     it('works as expected', () => {
         let foo = new Foo();
         let foo2 = new Foo();
-        let x = foo.makeXObject(123);
+        let x = { x: 123 };
         let bar = foo.bar(x, 'y');
-        let bar2 = foo2.bar(x, 'y');
         let baz = foo.baz(x);
-        chai_1.assert(x === foo.makeXObject(123), 'memoized makeXObject');
         chai_1.assert(bar === foo.bar(x, 'y'), 'memoized bar');
-        chai_1.assert(bar !== bar2, 'memoized per instance');
-        chai_1.assert(bar === baz, "foo.y === 'y' when baz was created");
+        chai_1.assert(bar !== foo2.bar(x, 'y'), 'memoized per instance');
+        chai_1.assert(bar === baz, 'foo.y === "y" when baz was created');
         chai_1.assert(baz === foo.baz(x), 'memoized baz');
         foo.y = 'yy';
         chai_1.assert(baz !== foo.baz(x), 'additional args for baz changed');

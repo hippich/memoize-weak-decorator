@@ -44,5 +44,5 @@ describe('memoize', () =>
 		foo.y = 'yy';
 		assert(baz !== foo.baz(x), 'additional args for baz changed');
 		assert(foo.bar(x, 'y', 3) === foo.bar(x, 'y', 3), 'supports variable number of arguments');
-	})
-})
+	});
+});

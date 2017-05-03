@@ -138,14 +138,16 @@ export default function memoize<F extends AnyFunction>(params:MemoizeParams<F>):
 /**
  * A method decorator that creates a memoized version of a method.
  */
-export default function memoize<T extends AnyFunction>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>):TypedPropertyDescriptor<T> | void;
+export default function memoize<T extends AnyFunction>(target: object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>):TypedPropertyDescriptor<T> | void;
 
 export default function memoize<T extends AnyFunction>():TypedPropertyDescriptor<T> | void
 {
 	// called as decorator, target is prototype; return modified descriptor
 	if (arguments.length == 3)
 	{
-		let [target, propertyKey, descriptor] = Array.from(arguments) as [Object, string|symbol, TypedPropertyDescriptor<T>];
+		let target = arguments[0] as object;
+		let propertyKey = arguments[1] as string|symbol;
+		let descriptor = arguments[2] as TypedPropertyDescriptor<T>;
 		return decorate(descriptor);
 	}
 
@@ -199,8 +201,7 @@ function decorate<T extends AnyFunction>(descriptor:TypedPropertyDescriptor<T>, 
  * Generates a method decorator that creates a memoized version of a function with additional args to control memoization
  * @param getMemoizeParams_propName The name of another class method that returns additional arguments for controlling memoization.
  */
-export function memoizeWith<T extends AnyFunction, P extends string, TARGET extends {[X in P]: (this:TARGET)=>any[]}>(getMemoizeParams_propName:P)
-	:<T>(
+export function memoizeWith<T extends AnyFunction, P extends string, TARGET extends {[X in P]: (this:TARGET)=>any[]}>(getMemoizeParams_propName:P):<T>(
 		target: TARGET,
 		propertyKey: string | symbol,
 		descriptor: TypedPropertyDescriptor<T>
@@ -210,7 +211,7 @@ export function memoizeWith<T extends AnyFunction, P extends string, TARGET exte
 		return decorate(
 			descriptor,
 			{
-				getAdditionalArgs: function(this:TARGET) {
+				getAdditionalArgs: function getAdditionalArgs(this:TARGET) {
 					let fn:()=>any[] = this[getMemoizeParams_propName] as any;
 					return fn.call(this);
 				}

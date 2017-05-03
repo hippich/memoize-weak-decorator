@@ -32,7 +32,7 @@ export default function memoize<F extends AnyFunction>(params: MemoizeParams<F>)
 /**
  * A method decorator that creates a memoized version of a method.
  */
-export default function memoize<T extends AnyFunction>(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): TypedPropertyDescriptor<T> | void;
+export default function memoize<T extends AnyFunction>(target: object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>): TypedPropertyDescriptor<T> | void;
 /**
  * Generates a method decorator that creates a memoized version of a function with additional args to control memoization
  * @param getMemoizeParams_propName The name of another class method that returns additional arguments for controlling memoization.

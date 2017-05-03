@@ -1,0 +1,23 @@
+{
+  "name": "memoize-weak-decorator",
+  "version": "1.0.4",
+  "description": "Garbage-collected memoizer for variadic functions that can be used as a decorator",
+  "main": "dist/memoize.js",
+  "authors": [
+    "Andy Dufilie <andy.dufilie@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "memoize",
+    "weak",
+    "decorator"
+  ],
+  "homepage": "https://github.com/hippich/memoize-weak-decorator",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
